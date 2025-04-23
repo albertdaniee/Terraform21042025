@@ -7,13 +7,12 @@ resource "aws_instance" "ArtifactoriesTERRAFORM" {
     ami = "ami-0e449927258d45bc4"
     instance_type =  "t2.micro"
     key_name = "ArtifactoriesTERRAFORMKP"
-    security_groups =  ["TerraformSecurityGroup"]
+    security_groups =  [ "TerraformSecurityGroup" ]
 }
 
-resource "ArtifactoriesTERRAFORMSG" "TerraformSecurityGroup" {
+resource "aws_security_group" "TerraformSecurityGroup" {
   name        = "TerraformSecurityGroup"
   description = "Security Group for Terraform Use Case w.r.to SSH Access"
-  #vpc_id      = var.vpc_id - Not Required as of Now
 
   ingress {
     description      = "Allow SSH Access"
